@@ -9,7 +9,7 @@ const validateBeersInput = require('../../validation/beers');
 
 // Load Profile Model
 const Profile = require('../../models/Profile');
-// Load User Profile
+// Load User Model
 const User = require('../../models/User');
 
 // @route   GET api/profile/test
@@ -195,6 +195,47 @@ router.post('/beers', passport.authenticate('jwt', {
 
          profile.save().then(profile => res.json(profile));
       })
+})
+
+
+// @route   DELETE api/profile/beers/:beer_id
+// @desc    Delete beers from profile
+// @access  Private
+router.delete('/beers/:beer_id', passport.authenticate('jwt', {
+   session: false
+}), (req, res) => {
+
+   Profile.findOne({
+         user: req.user.id
+      })
+      .then(profile => {
+         // Get remove index 
+         const removeIndex = profile.beer
+            .map(item => item.id)
+            .indexOf(req.params.beer_id);
+
+         // Splice out of array
+         profile.beer.splice(removeIndex, 1);
+
+         // Save
+         profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
+})
+
+// @route   DELETE api/profile
+// @desc    Delete profile
+// @access  Private
+
+router.delete('/', passport.authenticate('jwt', {
+   session: false
+}), (req, res) => {
+   Profile.findOneAndRemove({
+      user: req.user.id
+   }).then(() => res.json({
+      success: true
+   }))
+
 })
 
 module.exports = router;
