@@ -13,7 +13,7 @@ const app = express();
 
 // Body-parser middleware
 app.use(bodyParser.urlencoded({
-    extended: false
+   extended: false
 }));
 app.use(bodyParser.json());
 
@@ -21,8 +21,10 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 // connect to mongodb
-mongoose.connect(db)
-    .then(() => console.log('MongoDB connected successfully')).catch(err => console.log(err));
+mongoose.connect(db, {
+      useNewUrlParser: true
+   })
+   .then(() => console.log('MongoDB connected successfully')).catch(err => console.log(err));
 
 // Passport middlewere
 app.use(passport.initialize());
