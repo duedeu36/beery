@@ -31,8 +31,8 @@ router.get('/', passport.authenticate('jwt', {
       })
       .populate('user', ['name', 'avatar'])
       .then(profile => {
-         errors.noprofile = 'There is no profile for this user'
          if (!profile) {
+            errors.noprofile = 'There is no profile for this user';
             return res.status(404).json(errors)
          }
          res.json(profile);
@@ -41,11 +41,32 @@ router.get('/', passport.authenticate('jwt', {
 })
 
 
+// @route   GET api/profile/all
+// @desc    Get all profiles
+// @access  Public 
+
+router.get('/all', (req, res) => {
+   const errors = {};
+   Profile.find()
+      .populate('user', ['name', 'avatar'])
+      .then(profiles => {
+         if (!profiles) {
+            errors.noprofile = 'There are no profiles'
+            return res.status(404).json(errors);
+         }
+         res.json(profiles); //-- profiles, NOT profile
+      })
+      .catch(err => res.status(404).json(
+         'There are no profiles'
+      ));
+});
+
 // @route   GET api/profile/handle/:handle
 // @desc    Get profile by handle
-// @access  Public
+// @access  Public 
 
 router.get('/handle/:handle', (req, res) => {
+   const errors = {};
    Profile.findOne({
          handle: req.params.handle
       })
@@ -138,8 +159,5 @@ router.post('/', passport.authenticate('jwt', {
          }
       });
 })
-
-
-
 
 module.exports = router;
