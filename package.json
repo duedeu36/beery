@@ -1,18 +1,22 @@
 {
-   "name": "beery",
-   "version": "1.0.0",
-   "description": "A beer community",
-   "main": "server.js",
-   "scripts": {
-      "client-install": "npm install --prefix client",
-      "start": "node server.js",
-      "servermon": "nodemon server.js",
-      "client": "npm start --prefix client",
-      "dev": "concurrently \"npm run servermon\" \"npm run client\""
-   },
-   "author": "Damir Lucic",
-   "license": "MIT",
-   "devDependencies": {
-      "nodemon": "^1.18.10"
-   }
+  "name": "beery",
+  "version": "1.0.0",
+  "description": "A beer community",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "servermon": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run servermon\" \"npm run client\""
+  },
+  "author": "Damir Lucic",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4"
+  }
 }
