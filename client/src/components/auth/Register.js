@@ -12,12 +12,26 @@ class Register extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    const newUser = {
+      email: this.state.email,
+      name: this.state.name,
+      password: this.state.password,
+      password2: this.state.password2
+    };
+
+    console.log(newUser);
   }
   //   state = {
   //     addAnimation: false,
@@ -33,7 +47,7 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <label>
             <p ref="animation" className="label-txt">
               ENTER YOUR EMAIL
@@ -69,7 +83,7 @@ class Register extends Component {
               ENTER YOUR PASSWORD
             </p>
             <input
-              type="text"
+              type="password"
               className="input"
               defaultValue={this.state.password}
               onChange={this.onChange}
@@ -84,7 +98,7 @@ class Register extends Component {
               CONFIRM YOUR PASSWORD
             </p>
             <input
-              type="text"
+              type="password"
               className="input"
               defaultValue={this.state.password2}
               onChange={this.onChange}
