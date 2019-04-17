@@ -5,22 +5,28 @@ class Login extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errors: {}
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    //  not needed because of ES6 arrow function:
+    //  this.onChange = this.onChange.bind(this);
+    //  this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(e) {
+  onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
+  };
 
-  onSubmit(e) {
-    alert("User with email " + this.state.email + " is successfully logged in");
-  }
+  onSubmit = e => {
+    e.preventDefault();
+
+    console.log(
+      "User with email " + this.state.email + " is successfully logged in"
+    );
+  };
 
   render() {
     return (
