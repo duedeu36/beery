@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import classnames from "classnames";
 
 class Register extends Component {
   constructor() {
@@ -36,7 +37,7 @@ class Register extends Component {
     axios
       .post("/api/users/register", newUser)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data));
+      .catch(err => this.setState({ errors: err.response.data }));
   };
   //   state = {
   //     addAnimation: false,
@@ -50,6 +51,8 @@ class Register extends Component {
   //   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -59,7 +62,9 @@ class Register extends Component {
             </p>
             <input
               type="text"
-              className="input"
+              className={classnames("input", {
+                "form-control is-invalid": errors.email
+              })}
               defaultValue={this.state.email}
               onChange={this.onChange}
               name="email"
@@ -67,6 +72,9 @@ class Register extends Component {
             <div className="line-box">
               <div className="line" />
             </div>
+            {errors.email && (
+              <div className="invalid-feedback">{errors.email}</div>
+            )}
           </label>
           <label>
             <p ref="animation" className="label-txt">
@@ -74,7 +82,9 @@ class Register extends Component {
             </p>
             <input
               type="text"
-              className="input"
+              className={classnames("input", {
+                "form-control is-invalid": errors.name
+              })}
               defaultValue={this.state.name}
               onChange={this.onChange}
               name="name"
@@ -82,6 +92,9 @@ class Register extends Component {
             <div className="line-box">
               <div className="line" />
             </div>
+            {errors.name && (
+              <div className="invalid-feedback">{errors.name}</div>
+            )}
           </label>
           <label>
             <p ref="animation" className="label-txt">
@@ -89,7 +102,9 @@ class Register extends Component {
             </p>
             <input
               type="password"
-              className="input"
+              className={classnames("input", {
+                "form-control is-invalid": errors.password
+              })}
               defaultValue={this.state.password}
               onChange={this.onChange}
               name="password"
@@ -97,6 +112,9 @@ class Register extends Component {
             <div className="line-box">
               <div className="line" />
             </div>
+            {errors.password && (
+              <div className="invalid-feedback">{errors.password}</div>
+            )}
           </label>
           <label>
             <p ref="animation" className="label-txt">
@@ -104,7 +122,9 @@ class Register extends Component {
             </p>
             <input
               type="password"
-              className="input"
+              className={classnames("input", {
+                "form-control is-invalid": errors.password2
+              })}
               defaultValue={this.state.password2}
               onChange={this.onChange}
               name="password2"
@@ -112,6 +132,9 @@ class Register extends Component {
             <div className="line-box">
               <div className="line" />
             </div>
+            {errors.password2 && (
+              <div className="invalid-feedback">{errors.password2}</div>
+            )}
           </label>
           <button type="submit">register</button>
         </form>
