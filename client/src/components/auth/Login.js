@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
+import classnames from "classnames";
 
 class Login extends Component {
   constructor() {
@@ -17,6 +18,17 @@ class Login extends Component {
     //  this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/beerwall");
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -26,12 +38,16 @@ class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    console.log(
-      "User with email " + this.state.email + " is successfully logged in"
-    );
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.loginUser(userData);
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -40,14 +56,20 @@ class Login extends Component {
               ENTER YOUR EMAIL
             </p>
             <input
-              type="text"
-              className="input"
+              type="type"
               onChange={this.onChange}
               name="email"
+              className={classnames("input", {
+                "form-control is-invalid": errors.email
+              })}
+              defaultValue={this.state.email}
             />
             <div className="line-box">
               <div className="line" />
             </div>
+            {errors.email && (
+              <div className="invalid-feedback">{errors.email}</div>
+            )}
           </label>
           <label>
             <p ref="animation" className="label-txt">
@@ -55,13 +77,19 @@ class Login extends Component {
             </p>
             <input
               type="password"
-              className="input"
+              className={classnames("input", {
+                "form-control is-invalid": errors.email
+              })}
+              defaultValue={this.state.password}
               onChange={this.onChange}
               name="password"
             />
             <div className="line-box">
               <div className="line" />
             </div>
+            {errors.password && (
+              <div className="invalid-feedback">{errors.password}</div>
+            )}
           </label>
           <button type="submit">login</button>
         </form>
@@ -82,6 +110,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   { loginUser }
 )(Login);
