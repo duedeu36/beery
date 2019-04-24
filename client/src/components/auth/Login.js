@@ -65,6 +65,7 @@ class Login extends Component {
             defaultValue={this.state.email}
             onChange={this.onChange}
             error={errors.email}
+            line="line"
           />
           <TextFieldGroup
             title="PASSWORD"
@@ -73,6 +74,7 @@ class Login extends Component {
             defaultValue={this.state.password}
             onChange={this.onChange}
             error={errors.password}
+            line="line"
           />
           <button type="submit">login</button>
         </form>

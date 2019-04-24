@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Register extends Component {
   constructor() {
@@ -71,84 +72,49 @@ class Register extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <label>
-            <p ref="animation" className="label-txt">
-              ENTER YOUR EMAIL
-            </p>
-            <input
-              type="text"
-              className={classnames("input", {
-                "form-control is-invalid": errors.email
-              })}
+            <TextFieldGroup
+              title="EMAIL"
+              type="email"
+              name="email"
               defaultValue={this.state.email}
               onChange={this.onChange}
-              name="email"
+              error={errors.email}
+              line="line"
+              info="This site uses Gravatar, so if you want a profile image, use a Gravatar email"
             />
-            <div className="line-box">
-              <div className="line" />
-            </div>
-            {errors.email && (
-              <div className="invalid-feedback">{errors.email}</div>
-            )}
           </label>
           <label>
-            <p ref="animation" className="label-txt">
-              ENTER YOUR NAME
-            </p>
-            <input
-              type="text"
-              className={classnames("input", {
-                "form-control is-invalid": errors.name
-              })}
+            <TextFieldGroup
+              title="NAME"
+              type="name"
+              name="name"
               defaultValue={this.state.name}
               onChange={this.onChange}
-              name="name"
+              error={errors.name}
+              line="line"
             />
-            <div className="line-box">
-              <div className="line" />
-            </div>
-            {errors.name && (
-              <div className="invalid-feedback">{errors.name}</div>
-            )}
           </label>
           <label>
-            <p ref="animation" className="label-txt">
-              ENTER YOUR PASSWORD
-            </p>
-            <input
+            <TextFieldGroup
+              title="PASSWORD"
               type="password"
-              className={classnames("input", {
-                "form-control is-invalid": errors.password
-              })}
+              name="password"
               defaultValue={this.state.password}
               onChange={this.onChange}
-              name="password"
+              error={errors.password}
+              line="line"
             />
-            <div className="line-box">
-              <div className="line" />
-            </div>
-            {errors.password && (
-              <div className="invalid-feedback">{errors.password}</div>
-            )}
           </label>
           <label>
-            <p ref="animation" className="label-txt">
-              CONFIRM YOUR PASSWORD
-            </p>
-            <input
+            <TextFieldGroup
+              title2="PASSWORD"
               type="password"
-              className={classnames("input", {
-                "form-control is-invalid": errors.password2
-              })}
+              name="password2"
               defaultValue={this.state.password2}
               onChange={this.onChange}
-              name="password2"
+              error={errors.password2}
+              line="line"
             />
-            <div className="line-box">
-              <div className="line" />
-            </div>
-            {errors.password2 && (
-              <div className="invalid-feedback">{errors.password2}</div>
-            )}
           </label>
           <button type="submit">register</button>
         </form>

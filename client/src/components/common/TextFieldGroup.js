@@ -13,13 +13,15 @@ const TextFieldGroup = ({
   type,
   onChange,
   disabled,
-  className,
-  title
+  title,
+  title2,
+  line
 }) => {
   return (
     <div>
       <label>
         {title && <p className="label-txt">ENTER YOUR {title}</p>}
+        {title2 && <p className="label-txt">CONFIRM YOUR {title2}</p>}
         <input
           type={type}
           name={name}
@@ -30,11 +32,13 @@ const TextFieldGroup = ({
             "form-control is-invalid": error
           })}
         />
-        <div className="line-box">
-          <div className="line" />
-        </div>
-        {/* {info && <small className="form-text text-muted">{info}</small>} */}
+        {line && (
+          <div className="line-box">
+            <div className="line" />
+          </div>
+        )}
         {error && <div className="invalid-feedback">{error}</div>}
+        {info && <small className="form-text text-muted">{info}</small>}
       </label>
     </div>
   );
@@ -49,7 +53,9 @@ TextFieldGroup.propTypes = {
   type: PropTypes.string.isRequired,
   onChange: PropTypes.string.isRequired,
   disabled: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  title2: PropTypes.string,
+  line: PropTypes.string
 };
 
 TextFieldGroup.defaultProps = {
