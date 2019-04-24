@@ -18,6 +18,13 @@ class Login extends Component {
     //  this.onSubmit = this.onSubmit.bind(this);
   }
 
+  //   Push to /beerwall when reach (manually) the /login route
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/beerwall");
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/beerwall");
