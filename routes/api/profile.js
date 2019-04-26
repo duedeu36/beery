@@ -5,7 +5,7 @@ const passport = require("passport");
 
 // Load Validation
 const validateProfileInput = require("../../validation/profile");
-const validateBeersInput = require("../../validation/beers");
+const validateBeersProfileInput = require("../../validation/beersprofile");
 
 // Load Profile Model
 const Profile = require("../../models/Profile");
@@ -170,12 +170,12 @@ router.post(
 // @desc    Add beers to profile
 // @access  Private
 router.post(
-  "/beers",
+  "/beersprofile",
   passport.authenticate("jwt", {
     session: false
   }),
   (req, res) => {
-    const { errors, isValid } = validateBeersInput(req.body);
+    const { errors, isValid } = validateBeersProfileInput(req.body);
 
     //  Check validation
     if (!isValid) {

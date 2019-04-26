@@ -19,41 +19,29 @@ const BeerSchema = new Schema({
   comment: {
     type: String
   },
-  // location: {
-  //    type: String,
-  // },
-  beer: [
-    {
-      name: {
-        type: String,
-        required: true
-      },
-      alc: {
-        type: String,
-        required: true
-      },
-      origin: {
-        type: String,
-        required: false
-      },
-      price: {
-        type: String,
-        required: false
-      },
-      description: {
-        type: String,
-        required: false
-      }
-    }
-  ],
-  //   status: {
-  //     type: String,
-  //     required: true
-  //   },
-  //   favorites: {
-  //     // declared as "skills" in tutorial
-  //     type: [String]
-  //   },
+  location: {
+    type: String
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  alc: {
+    type: String,
+    required: true
+  },
+  origin: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

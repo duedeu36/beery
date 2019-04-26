@@ -8,6 +8,9 @@ const Beer = require("../../models/Beer");
 // Profile model (needed to check whose beer has been posted)
 const User = require("../../models/User");
 
+// Validation
+const validateBeersInput = require("../../validation/beers");
+
 // @route   GET api/beers/test
 // @desc    Test post route
 // @access  Public
@@ -83,7 +86,8 @@ router.post(
     session: false
   }),
   (req, res) => {
-    const { errors, isValid } = validateProfileInput(req.body);
+    const { errors, isValid } = validateBeersInput(req.body);
+    //  const { errors, isValid } = validateProfileInput(req.body);
 
     //  Check validation
     if (!isValid) {
@@ -98,6 +102,11 @@ router.post(
     if (req.body.info) beerFields.info = req.body.info;
     if (req.body.comment) beerFields.comment = req.body.comment;
     if (req.body.location) beerFields.location = req.body.location;
+    if (req.body.name) beerFields.name = req.body.name;
+    if (req.body.alc) beerFields.alc = req.body.alc;
+    if (req.body.origin) beerFields.origin = req.body.origin;
+    if (req.body.price) beerFields.price = req.body.price;
+    if (req.body.description) beerFields.description = req.body.description;
     if (req.body.date) beerFields.date = req.body.date;
     //  Favorites - Split into array
     //   if (typeof req.body.favorites !== "undefined") {
@@ -131,12 +140,12 @@ router.post(
   }
 );
 
-// @route   DELETE api/beer
+// @route   DELETE api/beers
 // @desc    Delete beer
 // @access  Private
 
 router.delete(
-  "/",
+  "/:id",
   passport.authenticate("jwt", {
     session: false
   }),
