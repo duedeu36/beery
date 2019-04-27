@@ -1,30 +1,19 @@
 import React, { Component } from "react";
+import beer from "../../img/beer1.jpeg";
 
 class Beer extends Component {
   render() {
     return (
       <div className="card">
-        <img className="card-img-top" src="..." alt="" />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">Cras justo odio</li>
-          <li className="list-group-item">Dapibus ac facilisis in</li>
-          <li className="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div className="card-body">
-          <a href="#" className="card-link">
-            Card link
-          </a>
-          <a href="#" className="card-link">
-            Another link
-          </a>
-        </div>
+        <img src={beer} alt="Beer" style={{ width: "30%", margin: "0 auto" }} />
+        <h4>Bier Deutschland</h4>
+        <p className="origin">German</p>
+        <p className="price">0,89€</p>
+        <p className="vol">3,9%</p>
+        <p>Just a beer object</p>
+        <p>
+          <button>Show more</button>
+        </p>
       </div>
     );
   }
