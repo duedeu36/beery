@@ -14,6 +14,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Home from "./components/layout/Home";
 import Beerwall from "./components/beerwall/Beerwall";
+import Notes from "./components/Notes";
 
 import "./App.css";
 
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/beerwall" component={Beerwall} />
             <Footer />
+            <Notes />
           </div>
         </Router>
       </Provider>
