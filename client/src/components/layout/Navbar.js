@@ -17,12 +17,18 @@ class Navbar extends Component {
 
     const authLinks = (
       <div className="col-4 align-self-center">
-        <img
-          src={user.avatar}
-          alt={user.name}
-          style={{ borderRadius: "50%", width: "40px" }}
-          title="You must have a Gravatar connected to your email to display an image"
-        />
+        <Link to="/profile">
+          <button type="button" className="btn btn-info">
+            <img
+              src={user.avatar}
+              alt={user.name}
+              style={{ borderRadius: "50%", width: "20px" }}
+              title="You must have a Gravatar connected to your email to display an image"
+            />{" "}
+            Profile
+          </button>
+        </Link>
+
         <button
           onClick={this.onLogoutClick}
           type="button"
@@ -58,6 +64,11 @@ class Navbar extends Component {
               style={{ width: "60px", height: "60px" }}
             >
               <h1>B</h1>
+            </Link>
+            <Link to="/beerwall">
+              <button type="button" className="btn btn-warning">
+                Beerwall
+              </button>
             </Link>
           </div>
           {isAuthenticated ? authLinks : guestLinks}
