@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/profileActions";
+import { getBeers } from "../../actions/beerActions";
 import PropTypes from "prop-types";
 import Spinner from "../common/Spinner";
+import Beer from "./Beer";
 
 class Beerwall extends Component {
   componentDidMount() {
-    this.props.getCurrentProfile();
+    this.props.getBeers();
   }
 
   render() {
     const { user } = this.props.auth;
-    const { profile, loading } = this.props.profile;
+    const { beer, loading } = this.props.beer;
 
     let beerwallContent;
 
-    if (profile === null || loading) {
+    if (beer === null || loading) {
       beerwallContent = <Spinner />;
     } else {
       //  Check if logged in user has profile data
-      beerwallContent = "Hello";
+      beerwallContent = <Beer />;
     }
 
     return (
-      <div className="beerwall">
+      <div>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -38,17 +39,17 @@ class Beerwall extends Component {
 }
 
 Beerwall.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
+  getBeers: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  beer: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  beer: state.beer,
   auth: state.auth
 });
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getBeers }
 )(Beerwall);
