@@ -9,6 +9,7 @@ const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 const beers = require("./routes/api/beers");
+const notes = require("./notes");
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use("/api/beers", beers);
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+app.use("/api/notes", notes);
 
 const port = process.env.PORT || 8000;
 

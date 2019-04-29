@@ -14,7 +14,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Home from "./components/layout/Home";
 import Beerwall from "./components/beerwall/Beerwall";
-import Notes from "./components/Notes";
+import Notes from "./components/ToDo/Notes";
 
 import "./App.css";
 
