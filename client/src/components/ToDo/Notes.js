@@ -25,7 +25,12 @@ export default class Notes extends Component {
   render() {
     return (
       <div>
-        <form className="App" onSubmit={this.onSubmit}>
+        <form
+          className="App"
+          action="/add/submit"
+          method="post"
+          onSubmit={this.onSubmit}
+        >
           <input value={this.state.word} onChange={this.onChange} />
           <button>Submit</button>
         </form>

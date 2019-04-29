@@ -14,47 +14,50 @@ router.get("/test", (req, res) =>
 // @route   GET api/notes
 // @desc    Read all notes
 // @access  Public
-router.get("/", (req, res) => {
-  fs.readFile("./notes.json", "utf-8", function getPosts() {
-    return new Promise((resolve, reject) => {
-      if (posts.length === 0) {
-        reject({
-          message: "no posts available",
-          status: 202
-        });
-      }
-      resolve(posts);
+router.post("/add", function(req, res) {
+  if (!req.body.todo && !req.body.status)
+    return res.status(400).send({ error: "todo and status required" });
+
+  // if(!Array.isArray(req.body.todo && req.body.status)) {
+  //     return res.send({ error: 'todo and status not a proper array' });
+  // }
+
+  fs.readFile(__dirname + "/notes.json", function(err, data) {
+    if (err) return res.send({ error: err });
+
+    var notes = null;
+    try {
+      notes = JSON.parse(data);
+    } catch (e) {
+      return res.send({ error: e.toString() });
+    }
+
+    //  if(!Array.isArray(req.body.productids)) {
+    //      return res.send({ error: 'orders json is invalid/ not a proper array' });
+    //  }
+
+    //  newOrderId = randomstring.generate(20);
+    let newNote = {
+      todo: req.body.todo,
+      status: req.body.status
+      //   date: new Date().toLocaleString()
+    };
+
+    notes.push(newNote);
+
+    let strOrders = null;
+    try {
+      strOrders = JSON.stringify(orders);
+    } catch (e) {
+      return res.send({ error: e });
+    }
+
+    fs.writeFile(__dirname + "/notes.json", strOrders, function(err) {
+      if (err) return res.send({ error: err });
+
+      return res.send({ error: 0, orders: orders });
     });
   });
 });
-
-// @route   POST api/notes/add
-// @desc    Write notes route
-// @access  Public
-router.post("/add", (req, res) => {
-  arrayOfNotes.notes.push({
-    task1: "muuh",
-    task2: "kuuh"
-  });
-
-  fs.writeFile("./notes.json", JSON.stringify(arrayOfNotes), "utf-8", function(
-    err,
-    data
-  ) {
-    var arrayOfNotes = JSON.parse(data);
-    if (err) throw err;
-    console.log("Done!");
-  });
-});
-
-// @route   PUT api/notes/edit
-// @desc    Update note route
-// @access  Public
-router.put("/edit:id", (req, res) => {});
-
-// @route   DELETE api/notes/delete
-// @desc    Delete note route
-// @access  Public
-router.post("/delete:id", (req, res) => {});
 
 module.exports = router;
