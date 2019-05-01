@@ -17,7 +17,7 @@ class Navbar extends Component {
 
     const authLinks = (
       <div className="col-4 align-self-center">
-        <Link to="/profile">
+        <Link to="/dashboard">
           <button type="button" className="btn btn-info">
             <img
               src={user.avatar}
@@ -25,7 +25,7 @@ class Navbar extends Component {
               style={{ borderRadius: "50%", width: "20px" }}
               title="You must have a Gravatar connected to your email to display an image"
             />{" "}
-            Profile
+            dashboard
           </button>
         </Link>
 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getBeers } from "../../actions/beerActions";
 import PropTypes from "prop-types";
@@ -19,8 +20,20 @@ class Beerwall extends Component {
     if (beer === null || loading) {
       beerwallContent = <Spinner />;
     } else {
-      //  Check if logged in user has profile data
-      beerwallContent = <Beer />;
+      //  Check if logged in user has beer data
+      if (Object.keys(beer).length > 0) {
+        beerwallContent = <Beer />;
+      } else {
+        // No beers posted yet
+        beerwallContent = (
+          <div>
+            Seems like no beers are posted yet.
+            <Link to="/add-beer">
+              <button className="btn btn-danger">add a beer</button>
+            </Link>
+          </div>
+        );
+      }
     }
 
     return (
