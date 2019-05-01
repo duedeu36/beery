@@ -59,11 +59,11 @@ router.get("/handle/:handle", (req, res) => {
 });
 
 // @route   GET api/beer/user/:user_id
-// @desc    Get beer by user ID
+// @desc    Get beers by user ID
 // @access  Public
 
 router.get("/user/:user_id", (req, res) => {
-  Beer.findOne({
+  Beer.find({
     user: req.params.user_id
   })
     .populate("user", ["name", "avatar"])
@@ -105,67 +105,9 @@ router.post(
     });
 
     newBeer.save().then(beer => res.json(beer));
+    //  save
   }
 );
-
-// router.post(
-//   "/:id",
-//   passport.authenticate("jwt", {
-//     session: false
-//   }),
-//   (req, res) => {
-//     const { errors, isValid } = validateBeersInput(req.body);
-//     //  const { errors, isValid } = validateProfileInput(req.body);
-
-//     //  Check validation
-//     if (!isValid) {
-//       //  Return any errors with 400 status
-//       return res.status(400).json(errors);
-//     }
-
-//     // Get fields
-//     const beerFields = {}; // beerFields get filled
-//     beerFields.user = req.user.id;
-//     //  beerFields.beerId = req.beerId.id;
-//     if (req.body.handle) beerFields.handle = req.body.handle;
-//     if (req.body.info) beerFields.info = req.body.info;
-//     if (req.body.comment) beerFields.comment = req.body.comment;
-//     if (req.body.location) beerFields.location = req.body.location;
-//     if (req.body.name) beerFields.name = req.body.name;
-//     if (req.body.alc) beerFields.alc = req.body.alc;
-//     if (req.body.origin) beerFields.origin = req.body.origin;
-//     if (req.body.price) beerFields.price = req.body.price;
-//     if (req.body.description) beerFields.description = req.body.description;
-//     if (req.body.date) beerFields.date = req.body.date;
-//     //  Favorites - Split into array
-//     //   if (typeof req.body.favorites !== "undefined") {
-//     //     beerFields.favorites = req.body.favorites.split(",");
-//     //   }
-//     Beer.findOne({
-//       user: req.user._id
-//     }).then(beer => {
-//       if (beer) {
-//         // Update beer
-//         Beer.findOneAndUpdate(
-//           { user: req.user.id },
-//           { $set: beerFields },
-//           { new: true }
-//         ).then(beer => res.json(beer));
-//       } else {
-//         // Create
-//         // Check if handle exists (the profile)
-//         Beer.findById(req.params.id).then(beer => {
-//           if (beer) {
-//             errors.handle = "That beer already exists";
-//             res.status(400).json(errors);
-//           }
-//           // Save beer
-//           new Beer(beerFields).save().then(beer => res.json(beer));
-//         });
-//       }
-//     });
-//   }
-// );
 
 // @route   DELETE api/beers
 // @desc    Delete beer
