@@ -15,6 +15,7 @@ import Login from "./components/auth/Login";
 import Home from "./components/layout/Home";
 import Beerwall from "./components/beerwall/Beerwall";
 import Notes from "./components/ToDo/Notes";
+import Dashboard from "./components/dashboard/Dashboard";
 
 import "./App.css";
 
@@ -33,7 +34,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutUser());
     // Clear current profile
-    store.dispatch(clearCurrentProfile);
+    store.dispatch(clearCurrentProfile());
     // Redicret to login
     window.location.href = "./login";
   }
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/beerwall" component={Beerwall} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Footer />
             <Notes />
           </div>

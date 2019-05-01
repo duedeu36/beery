@@ -109,6 +109,38 @@ router.post(
   }
 );
 
+// @route   PUT api/beers
+// @desc    update existing beer
+// @access  Private
+
+router.put(
+  "/",
+  passport.authenticate("jwt", {
+    session: false
+  }),
+  (req, res) => {
+    const { errors, isValid } = validateBeersInput(req.body);
+
+    // Check Validaiton
+    if (!isValid) {
+      // If any errors, send 400 with errors object
+      return res.status(400).json(errors);
+    }
+    const newBeer = new Beer({
+      handle: req.body.handle,
+      name: req.body.name,
+      alc: req.body.alc,
+      user: req.user.id,
+      origin: req.body.origin,
+      price: req.body.price,
+      description: req.body.description
+    });
+
+    newBeer.save().then(beer => res.json(beer));
+    //  save
+  }
+);
+
 // @route   DELETE api/beers
 // @desc    Delete beer
 // @access  Private

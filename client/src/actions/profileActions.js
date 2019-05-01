@@ -3,7 +3,7 @@ import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE } from "./types";
 
 // Get current profile
 export const getCurrentProfile = () => dispatch => {
-  dispatch(setProfileLoading());
+  dispatch(setProfileLoading()); // Loading goes here to "true" before it's profile is loaded
   axios
     .get("/api/profile")
     .then(res =>
