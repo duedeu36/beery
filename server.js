@@ -43,7 +43,7 @@ app.use("/api/beers", beers);
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
-app.use("/api/notes", notes);
+// app.use("/api/notes", notes);
 
 const port = process.env.PORT || 8000;
 

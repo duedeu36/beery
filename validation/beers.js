@@ -1,7 +1,6 @@
 const Validator = require("validator");
 const isEmpty = require("./is-empty");
 
-// This beer validation is for beers on the profile page (array in profil), NOT the primary beers on beerwall later (which is much more complex and an object)
 module.exports = function validateBeersInput(data) {
   let errors = {};
 

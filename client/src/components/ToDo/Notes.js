@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import List from "./List";
 
 export default class Notes extends Component {
   constructor(props) {
@@ -23,20 +22,7 @@ export default class Notes extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <form
-          className="App"
-          action="/add/submit"
-          method="post"
-          onSubmit={this.onSubmit}
-        >
-          <input value={this.state.word} onChange={this.onChange} />
-          <button>Submit</button>
-        </form>
-        <List items={this.state.items} />
-      </div>
-    );
+    return <div>notes</div>;
   }
 }
 
