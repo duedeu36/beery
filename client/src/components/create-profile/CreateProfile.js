@@ -10,6 +10,7 @@ class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      displayFavBrands: false,
       handle: "",
       defaultValue: "",
       // placeholder: "",
@@ -49,7 +50,27 @@ class CreateProfile extends Component {
       { label: "Hefeweißbier", value: "Favorite" },
       { label: "andere", value: "andere" }
     ];
-    const { errors } = this.state;
+    const { errors, displayFavBrands } = this.state;
+
+    let beerInputs;
+
+    if (displayFavBrands) {
+      beerInputs = (
+        <div>
+          {/* <InputGroup
+            name="name"
+            alc={this.state.alc}
+            origin={this.state.origin}
+            price={this.state.price}
+            description={this.state.description}
+            defaultValue={this.state.name}
+            onChange={this.onChange}
+            error={errors.name}
+          /> */}
+          nothing
+        </div>
+      );
+    }
 
     return (
       <div>
@@ -129,7 +150,7 @@ CreateProfile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  prfile: state.profile,
+  profile: state.profile,
   errors: state.errors
 });
 

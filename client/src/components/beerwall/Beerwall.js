@@ -12,7 +12,7 @@ class Beerwall extends Component {
   }
 
   render() {
-    const { user } = this.props.auth;
+    //  const { user } = this.props.auth;
     const { beer, loading } = this.props.beer;
 
     let beerwallContent;
