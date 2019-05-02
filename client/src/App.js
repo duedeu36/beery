@@ -18,7 +18,7 @@ import Home from "./components/layout/Home";
 import Beerwall from "./components/beerwall/Beerwall";
 import Notes from "./components/ToDo/Notes";
 import Dashboard from "./components/dashboard/Dashboard";
-
+import CreateProfile from "./components/create-profile/CreateProfile";
 import "./App.css";
 
 // Check for token
@@ -58,6 +58,13 @@ class App extends Component {
             <Route exact path="/beerwall" component={Beerwall} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
             </Switch>
             <Footer />
             <Notes />

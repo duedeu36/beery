@@ -95,7 +95,7 @@ class Register extends Component {
           </label>
           <label>
             <TextFieldGroup
-              title="PASSWORD"
+              title="ENTER YOUR PASSWORD"
               type="password"
               name="password"
               defaultValue={this.state.password}
@@ -106,7 +106,7 @@ class Register extends Component {
           </label>
           <label>
             <TextFieldGroup
-              title2="PASSWORD"
+              title2="CONFIRM YOUR PASSWORD"
               type="password"
               name="password2"
               defaultValue={this.state.password2}

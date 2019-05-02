@@ -2,36 +2,29 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const TextFieldGroup = ({
+const TextAreaFieldGroup = ({
   name,
-  handle,
-  placeholder,
   defaultValue,
-  label,
+  placeholder,
   error,
   info,
-  type,
   onChange,
-  disabled,
-  title,
-  title2,
-  line
+  line,
+  border
 }) => {
   return (
     <div>
       <label>
-        {title && <p className="label-txt">{title}</p>}
-        {title2 && <p className="label-txt">{title2}</p>}
-        <input
-          type={type}
-          handle={handle}
+        <textarea
           name={name}
-          disabled={disabled}
           defaultValue={defaultValue}
           onChange={onChange}
+          placeholder={placeholder}
+          border={border}
           className={classnames("input", {
             "form-control is-invalid": error
           })}
+          style={{ border: "2px solid #D8D8D8" }}
         />
         {line && (
           <div className="line-box">
@@ -45,23 +38,13 @@ const TextFieldGroup = ({
   );
 };
 
-TextFieldGroup.propTypes = {
+TextAreaFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
-  handle: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   defaultValue: PropTypes.string.isRequired,
   info: PropTypes.string,
   error: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  onChange: PropTypes.string.isRequired,
-  disabled: PropTypes.string,
-  title: PropTypes.string,
-  title2: PropTypes.string,
-  line: PropTypes.string
+  onChange: PropTypes.string.isRequired
 };
 
-TextFieldGroup.defaultProps = {
-  type: "text"
-};
-
-export default TextFieldGroup;
+export default TextAreaFieldGroup;

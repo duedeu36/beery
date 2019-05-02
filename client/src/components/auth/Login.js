@@ -59,7 +59,7 @@ class Login extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <TextFieldGroup
-            title="EMAIL"
+            title="ENTER YOUR EMAIL"
             type="email"
             name="email"
             defaultValue={this.state.email}
@@ -68,7 +68,7 @@ class Login extends Component {
             line="line"
           />
           <TextFieldGroup
-            title="PASSWORD"
+            title="ENTER YOUR PASSWORD"
             type="password"
             name="password"
             defaultValue={this.state.password}
