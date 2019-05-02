@@ -83,6 +83,7 @@ class CreateProfile extends Component {
               </p>
               <label onSubmit={this.onSubmit}>
                 <TextFieldGroup
+                  handle={this.state.handle}
                   title="ENTER A HANDLE"
                   type="text"
                   name="handle"
@@ -93,12 +94,13 @@ class CreateProfile extends Component {
                   info="Add a profile handle"
                 />
                 <TextFieldGroup
+                  handle="location"
                   title="ADD FAVORITE BEERS"
                   type="text"
-                  name="favorites"
-                  defaultValue={this.state.favorites}
+                  name="location"
+                  defaultValue={this.state.location}
                   onChange={this.onChange}
-                  error={errors.favorites}
+                  error={errors.location}
                   line="line"
                   info="Please separate with comma"
                 />

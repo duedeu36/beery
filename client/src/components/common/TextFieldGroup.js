@@ -15,7 +15,8 @@ const TextFieldGroup = ({
   disabled,
   title,
   title2,
-  line
+  line,
+  favorites
 }) => {
   return (
     <div>
@@ -29,6 +30,7 @@ const TextFieldGroup = ({
           disabled={disabled}
           defaultValue={defaultValue}
           onChange={onChange}
+          favorites={favorites}
           className={classnames("input", {
             "form-control is-invalid": error
           })}
@@ -53,11 +55,12 @@ TextFieldGroup.propTypes = {
   info: PropTypes.string,
   error: PropTypes.string,
   type: PropTypes.string.isRequired,
-  onChange: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   disabled: PropTypes.string,
   title: PropTypes.string,
   title2: PropTypes.string,
-  line: PropTypes.string
+  line: PropTypes.string,
+  favorites: PropTypes.array
 };
 
 TextFieldGroup.defaultProps = {
