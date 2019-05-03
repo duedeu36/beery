@@ -18,13 +18,13 @@ class CreateProfile extends Component {
       info: "",
       location: "",
       name: "",
-      alc: "",
-      origin: "",
-      price: "",
-      description: "",
+      // alc: "",
+      // origin: "",
+      // price: "",
+      // description: "",
       favorites: [],
       errors: {},
-      bio: "",
+      // bio: "", // Spruch!
       border: ""
     };
 
