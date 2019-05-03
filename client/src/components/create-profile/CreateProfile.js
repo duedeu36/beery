@@ -40,10 +40,7 @@ class CreateProfile extends Component {
     e.preventDefault();
 
     const profileData = {
-      handle: this.state.handle,
-      location: this.state.location,
-      bio: this.state.bio,
-      name: this.state.name
+      handle: this.state.handle
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -72,17 +69,18 @@ class CreateProfile extends Component {
     if (displayFavBrands) {
       beerInputs = (
         <div>
-          <TextFieldGroup
+          {/* <TextFieldGroup
             handle={this.state.name}
             title="ADD HERE:"
             type="text"
             name="name"
-            defaultValue={this.state.handle}
+            defaultValue={this.state.name}
             onChange={this.onChange}
             error={errors.handle}
             line="line"
             info="Please seperate with a comma"
-          />
+          /> */}
+          nichts
         </div>
       );
     }
@@ -98,7 +96,7 @@ class CreateProfile extends Component {
         </p>
         <form onSubmit={this.onSubmit}>
           <TextFieldGroup
-            handle={this.state.handle}
+            // handle={this.state.handle}
             title="ENTER A HANDLE"
             type="text"
             name="handle"
@@ -108,7 +106,7 @@ class CreateProfile extends Component {
             line="line"
             info="Add a profile handle"
           />
-          <TextFieldGroup
+          {/* <TextFieldGroup
             handle="location"
             title="ADD FAVORITE BEERS"
             type="text"
@@ -118,8 +116,8 @@ class CreateProfile extends Component {
             error={errors.location}
             line="line"
             info="Please separate with a comma"
-          />
-          <TextAreaFieldGroup
+          /> */}
+          {/* <TextAreaFieldGroup
             title="ABOUT YOU"
             type="text"
             name="bio"
@@ -130,7 +128,7 @@ class CreateProfile extends Component {
             error={errors.bio}
             line="line"
             info="Tell us something about you"
-          />
+          /> */}
           {/* <SelectListGroup
                   name="status"
                   options={options}
@@ -153,11 +151,12 @@ class CreateProfile extends Component {
             <small className="text-muted">(optional)</small>
           </div>
           {beerInputs}
-          <input
+          {/* <input
             type="submit"
             value="Submit"
             className="btn btn-danger btn-block"
-          />
+          /> */}
+          <button type="submit">Create Profile</button>
         </form>
       </div>
       // </div>
@@ -168,6 +167,7 @@ class CreateProfile extends Component {
 }
 
 CreateProfile.propTypes = {
+  //   createProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };

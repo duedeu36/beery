@@ -7,6 +7,9 @@ module.exports = function validateBeersProfileInput(data) {
 
   data.name = !isEmpty(data.name) ? data.name : "";
   data.alc = !isEmpty(data.alc) ? data.alc : "";
+  data.origin = !isEmpty(data.origin) ? data.origin : "";
+  data.price = !isEmpty(data.price) ? data.price : "";
+  data.description = !isEmpty(data.description) ? data.description : "";
 
   if (Validator.isEmpty(data.name)) {
     errors.name = "Please add the beer name";
@@ -14,6 +17,17 @@ module.exports = function validateBeersProfileInput(data) {
 
   if (Validator.isEmpty(data.alc)) {
     errors.alc = "Please add the % vol, if you rememeber ;)";
+  }
+  if (Validator.isEmpty(data.origin)) {
+    errors.origin = "Add the origin of the beer";
+  }
+
+  if (Validator.isEmpty(data.price)) {
+    errors.price = "How much does the beer cost?";
+  }
+
+  if (Validator.isEmpty(data.description)) {
+    errors.description = "Describe it in a few words";
   }
 
   return {
