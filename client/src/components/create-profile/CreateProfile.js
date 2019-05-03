@@ -15,7 +15,6 @@ class CreateProfile extends Component {
       displayFavBrands: false,
       handle: "",
       defaultValue: "",
-      // placeholder: "",
       info: "",
       location: "",
       name: "",
@@ -43,7 +42,8 @@ class CreateProfile extends Component {
     e.preventDefault();
 
     const profileData = {
-      handle: this.state.handle
+      handle: this.state.handle,
+      favorites: this.state.favorites
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -72,17 +72,17 @@ class CreateProfile extends Component {
     if (displayFavBrands) {
       beerInputs = (
         <div>
-          {/* <TextFieldGroup
-            handle={this.state.name}
+          <TextFieldGroup
+            handle={this.state.favorites}
             title="ADD HERE:"
             type="text"
-            name="name"
-            defaultValue={this.state.name}
+            name="favorites"
+            defaultValue={this.state.favorites}
             onChange={this.onChange}
-            error={errors.handle}
+            // error={errors.favorites}
             line="line"
             info="Please seperate with a comma"
-          /> */}
+          />
           nichts
         </div>
       );
