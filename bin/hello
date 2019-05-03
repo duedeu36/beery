@@ -1,4 +1,0 @@
-#!/bin/bash
-
-read -r -p 'Commit message: ' desc
-git commit -m "$desc"
