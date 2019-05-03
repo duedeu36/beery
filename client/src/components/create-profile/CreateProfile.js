@@ -28,6 +28,9 @@ class CreateProfile extends Component {
       bio: "",
       border: ""
     };
+
+    //  this.onChange = this.onChange.bind(this);
+    //  this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,7 +39,7 @@ class CreateProfile extends Component {
     }
   }
 
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault();
 
     const profileData = {
@@ -44,7 +47,7 @@ class CreateProfile extends Component {
     };
 
     this.props.createProfile(profileData, this.props.history);
-  }
+  };
 
   onChange = e => {
     this.setState({
@@ -53,6 +56,7 @@ class CreateProfile extends Component {
   };
 
   render() {
+    const { errors, displayFavBrands } = this.state;
     // Select options for status
     //  const options = [
     //    { label: "* Select Favorite Beer", value: 0 },
@@ -62,7 +66,6 @@ class CreateProfile extends Component {
     //    { label: "Hefeweißbier", value: "Favorite" },
     //    { label: "andere", value: "andere" }
     //  ];
-    const { errors, displayFavBrands } = this.state;
 
     let beerInputs;
 
@@ -96,15 +99,13 @@ class CreateProfile extends Component {
         </p>
         <form onSubmit={this.onSubmit}>
           <TextFieldGroup
-            // handle={this.state.handle}
-            title="ENTER A HANDLE"
-            type="text"
+            title="ENTER HANDLE"
             name="handle"
             defaultValue={this.state.handle}
             onChange={this.onChange}
             error={errors.handle}
             line="line"
-            info="Add a profile handle"
+            info="Enter profile handle, it cannot be changed!"
           />
           {/* <TextFieldGroup
             handle="location"
@@ -149,8 +150,8 @@ class CreateProfile extends Component {
               Add Favorite Brands
             </button>
             <small className="text-muted">(optional)</small>
+            {beerInputs}
           </div>
-          {beerInputs}
           {/* <input
             type="submit"
             value="Submit"
