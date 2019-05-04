@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { clearCurrentProfile } from "../../actions/profileActions";
+import {
+  clearCurrentProfile,
+  getCurrentProfile
+} from "../../actions/profileActions";
+import Spinner from "../common/Spinner";
 
 class Navbar extends Component {
   onLogoutClick = e => {
@@ -12,21 +16,41 @@ class Navbar extends Component {
     this.props.logoutUser();
   };
 
+  componentDidMount() {
+    this.props.getCurrentProfile();
+    //  in profileReducer 'profile' and 'loading' are called within this function...
+  }
+
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    const { profile, loading } = this.props.profile;
 
-    const authLinks = (
-      <div className="col-4 align-self-center">
-        <div className="row">
-          <Link to="/profile">
+    let navbarHandle;
+    // ...and when the function is called we can make this if else statement
+    if (profile === null || loading) {
+      navbarHandle = user.name;
+    } else {
+      //  Check if logged in user has profile data
+      if (Object.keys(profile).length > 0) {
+        navbarHandle = (
+          <Link to={`/profile/${profile.handle}`}>
             <img
               src={user.avatar}
               alt={user.name}
               style={{ borderRadius: "50%", width: "20px" }}
               title="You must have a Gravatar connected to your email to display an image"
-            />{" "}
-            {this.props.auth.user.name}
+            />
           </Link>
+        );
+      } else {
+        navbarHandle = user.name;
+      }
+    }
+
+    const authLinks = (
+      <div className="col-4 align-self-center">
+        <div className="row">
+          {navbarHandle}
           <Link to="/dashboard">
             <button type="button" className="btn btn-info">
               dashboard
@@ -85,14 +109,17 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
-  { logoutUser, clearCurrentProfile }
+  { logoutUser, clearCurrentProfile, getCurrentProfile }
 )(Navbar);
