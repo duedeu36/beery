@@ -43,7 +43,8 @@ class CreateProfile extends Component {
 
     const profileData = {
       handle: this.state.handle,
-      favorites: this.state.favorites
+      favorites: this.state.favorites,
+      info: this.state.info
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -107,6 +108,17 @@ class CreateProfile extends Component {
             line="line"
             info="Enter profile handle, it cannot be changed!"
           />
+          <TextAreaFieldGroup
+            title="ABOUT YOU"
+            type="text"
+            name="info"
+            border="border"
+            // placeholder="Text here"
+            defaultValue={this.state.info}
+            onChange={this.onChange}
+            line="line"
+            info="Tell us something about you"
+          />
           {/* <TextFieldGroup
             handle="location"
             title="ADD FAVORITE BEERS"
@@ -117,18 +129,6 @@ class CreateProfile extends Component {
             error={errors.location}
             line="line"
             info="Please separate with a comma"
-          /> */}
-          {/* <TextAreaFieldGroup
-            title="ABOUT YOU"
-            type="text"
-            name="bio"
-            border="border"
-            // placeholder="Text here"
-            defaultValue={this.state.bio}
-            onChange={this.onChange}
-            error={errors.bio}
-            line="line"
-            info="Tell us something about you"
           /> */}
           {/* <SelectListGroup
                   name="status"

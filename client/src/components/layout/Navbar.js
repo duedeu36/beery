@@ -17,25 +17,30 @@ class Navbar extends Component {
 
     const authLinks = (
       <div className="col-4 align-self-center">
-        <Link to="/dashboard">
-          <button type="button" className="btn btn-info">
+        <div className="row">
+          <Link to="/profile">
             <img
               src={user.avatar}
               alt={user.name}
               style={{ borderRadius: "50%", width: "20px" }}
               title="You must have a Gravatar connected to your email to display an image"
             />{" "}
-            dashboard
-          </button>
-        </Link>
+            {this.props.auth.user.name}
+          </Link>
+          <Link to="/dashboard">
+            <button type="button" className="btn btn-info">
+              dashboard
+            </button>
+          </Link>
 
-        <button
-          onClick={this.onLogoutClick}
-          type="button"
-          className="btn btn-success"
-        >
-          Logout
-        </button>
+          <button
+            onClick={this.onLogoutClick}
+            type="button"
+            className="btn btn-success"
+          >
+            Logout
+          </button>
+        </div>
       </div>
     );
 
