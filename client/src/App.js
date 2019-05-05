@@ -20,6 +20,7 @@ import Notes from "./components/ToDo/Notes";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
+import Profile from "./components/dashboard/Profile";
 import "./App.css";
 
 // Check for token
@@ -60,6 +61,13 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
+            {/* <Switch>
+              <PrivateRoute
+                exact
+                path={`/profile/${profile.handle}`}
+                component={Profile}
+              />
+            </Switch> */}
             <Switch>
               <PrivateRoute
                 exact

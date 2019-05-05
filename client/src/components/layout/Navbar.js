@@ -43,7 +43,7 @@ class Navbar extends Component {
           </Link>
         );
       } else {
-        navbarHandle = user.name;
+        navbarHandle = null;
       }
     }
 

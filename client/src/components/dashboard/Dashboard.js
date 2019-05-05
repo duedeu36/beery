@@ -58,7 +58,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>deleteUser
+        <h1>Dashboard</h1>
         {dashboardContent}
       </div>
     );

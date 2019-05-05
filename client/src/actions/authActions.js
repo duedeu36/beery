@@ -59,7 +59,7 @@ export const logoutUser = () => dispatch => {
 };
 
 // Delete user
-export const deleteUser = () => dispatch => {
+export const deleteUser = history => dispatch => {
   if (
     window.confirm(
       "Are you sure you want to leave us? You can always get a free beer at our meetings"
