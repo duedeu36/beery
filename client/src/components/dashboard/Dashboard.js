@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
+import { deleteUser } from "../../actions/authActions";
 import Spinner from "../common/Spinner";
 import Profile from "./Profile";
 
@@ -14,6 +15,9 @@ class Dashboard extends Component {
 
   onDeleteClick = e => {
     this.props.deleteAccount();
+  };
+  onDeleteUserClick = e => {
+    this.props.deleteUser();
   };
 
   render() {
@@ -30,11 +34,11 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <Profile />
-            <button
-              onClick={this.onDeleteClick}
-              className="btn btn-danger btn-sm"
-            >
-              delete my account
+            <button onClick={this.onDeleteClick} className="btn btn-warning">
+              delete my profile
+            </button>
+            <button onClick={this.onDeleteUserClick} className="btn btn-danger">
+              kill this user
             </button>
           </div>
         );
@@ -54,7 +58,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>deleteUser
         {dashboardContent}
       </div>
     );
@@ -64,6 +68,7 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -75,5 +80,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, deleteAccount }
+  { getCurrentProfile, deleteAccount, deleteUser }
 )(Dashboard);

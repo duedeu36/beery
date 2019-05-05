@@ -57,3 +57,22 @@ export const logoutUser = () => dispatch => {
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+// Delete user
+export const deleteUser = () => dispatch => {
+  if (
+    window.confirm(
+      "Are you sure you want to leave us? You can always get a free beer at our meetings"
+    )
+  ) {
+    axios
+      .delete("/api/users")
+      .then(res =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {}
+        })
+      )
+      .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+  }
+};

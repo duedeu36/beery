@@ -42,7 +42,7 @@ export const createProfile = (
     );
 };
 
-// Delete Account & profile
+// Delete profile
 export const deleteAccount = () => dispatch => {
   if (window.confirm("Are you sure? This cannot be undone!")) {
     axios

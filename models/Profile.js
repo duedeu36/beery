@@ -19,30 +19,7 @@ const ProfileSchema = new Schema({
   location: {
     type: String
   },
-  beer: [
-    {
-      name: {
-        type: String,
-        required: true
-      },
-      alc: {
-        type: String,
-        required: true
-      },
-      origin: {
-        type: String,
-        required: false
-      },
-      price: {
-        type: String,
-        required: false
-      },
-      description: {
-        type: String,
-        required: false
-      }
-    }
-  ],
+  beer: [],
   favorites: {
     // declared as "skills" in tutorial
     type: [String]
