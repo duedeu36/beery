@@ -129,7 +129,7 @@ router.post(
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.date) profileFields.date = req.body.date;
     //  Favorites - Split into array
-    if (typeof req.body.favorites !== "undefined") {
+    if (typeof req.body.favorites === "string") {
       profileFields.favorites = req.body.favorites.split(",");
     }
     Profile.findOne({
