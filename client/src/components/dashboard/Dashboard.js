@@ -33,7 +33,6 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <Profile />
             <button onClick={this.onDeleteClick} className="btn btn-warning">
               delete my profile
             </button>
@@ -43,7 +42,7 @@ class Dashboard extends Component {
           </div>
         );
       } else {
-        // No beers posted yet
+        // No profile created yet
         dashboardContent = (
           <div>
             Hallo {user.name}, nice to see you. You don't have a profile yet.
