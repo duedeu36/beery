@@ -8,6 +8,7 @@ import {
   getCurrentProfile
 } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
+import Profile from "../dashboard/Profile";
 
 class Navbar extends Component {
   onLogoutClick = e => {
@@ -33,7 +34,8 @@ class Navbar extends Component {
       //  Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
         navbarHandle = (
-          <Link to={`/profile/${profile.handle}`}>
+          //  <Route exact path="/login" component={Profile} />
+          <Link to={`/profile/${user.name}`}>
             <img
               src={user.avatar}
               alt={user.name}
