@@ -51,7 +51,7 @@ class CreateProfile extends Component {
       this.setState({
         handle: profile.handle,
         info: profile.info,
-        favorites: profile.favorites
+        favorites: favoritesCSV
       });
     }
   }
@@ -108,9 +108,6 @@ class CreateProfile extends Component {
 
     return (
       <div>
-        {/* <div className="container">
-          <div className="row"> */}
-        {/* <div className="col-md-8 m-auto"> */}
         <h1 className="text-center">Edit Profile</h1>
         <form onSubmit={this.onSubmit}>
           <TextFieldGroup
@@ -156,9 +153,6 @@ class CreateProfile extends Component {
           <button type="submit">Create Profile</button>
         </form>
       </div>
-      // </div>
-      //   </div>
-      // </div>
     );
   }
 }

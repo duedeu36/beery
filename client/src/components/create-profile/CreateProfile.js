@@ -18,10 +18,6 @@ class CreateProfile extends Component {
       info: "",
       location: "",
       name: "",
-      // alc: "",
-      // origin: "",
-      // price: "",
-      // description: "",
       favorites: [],
       errors: {},
       // bio: "", // Spruch!
@@ -91,9 +87,6 @@ class CreateProfile extends Component {
 
     return (
       <div>
-        {/* <div className="container">
-          <div className="row"> */}
-        {/* <div className="col-md-8 m-auto"> */}
         <h1 className="text-center">Create Your Profile</h1>
         <p className="lead text-center">
           Put some informations about yourself here
@@ -119,25 +112,6 @@ class CreateProfile extends Component {
             line="line"
             info="Tell us something about you"
           />
-          {/* <TextFieldGroup
-            handle="location"
-            title="ADD FAVORITE BEERS"
-            type="text"
-            name="location"
-            defaultValue={this.state.location}
-            onChange={this.onChange}
-            error={errors.location}
-            line="line"
-            info="Please separate with a comma"
-          /> */}
-          {/* <SelectListGroup
-                  name="status"
-                  options={options}
-                  defaultValue={this.state.status}
-                  onChange={this.onChange}
-                  error={errors.status}
-                  info="Give us some favorites you have!"
-                /> */}
           <div className="mb-3">
             <button
               type="button"
@@ -161,9 +135,6 @@ class CreateProfile extends Component {
           <button type="submit">Create Profile</button>
         </form>
       </div>
-      // </div>
-      //   </div>
-      // </div>
     );
   }
 }
