@@ -10,7 +10,8 @@ const TextAreaFieldGroup = ({
   info,
   onChange,
   line,
-  border
+  border,
+  title
 }) => {
   return (
     <div>
@@ -18,6 +19,8 @@ const TextAreaFieldGroup = ({
         <textarea
           name={name}
           defaultValue={defaultValue}
+          info={info}
+          title={title}
           onChange={onChange}
           placeholder={placeholder}
           border={border}
@@ -43,6 +46,7 @@ TextAreaFieldGroup.propTypes = {
   placeholder: PropTypes.string,
   defaultValue: PropTypes.string.isRequired,
   info: PropTypes.string,
+  title: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };

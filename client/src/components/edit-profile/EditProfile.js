@@ -19,10 +19,6 @@ class CreateProfile extends Component {
       info: "",
       location: "",
       name: "",
-      // alc: "",
-      // origin: "",
-      // price: "",
-      // description: "",
       favorites: [],
       errors: {},
       // bio: "", // Spruch!
@@ -97,7 +93,7 @@ class CreateProfile extends Component {
         <div>
           <TextFieldGroup
             handle={this.state.favorites}
-            title="ADD HERE:"
+            title="ADD HERE"
             type="text"
             name="favorites"
             defaultValue={this.state.favorites}
@@ -137,25 +133,6 @@ class CreateProfile extends Component {
             line="line"
             info="Tell us something about you"
           />
-          {/* <TextFieldGroup
-            handle="location"
-            title="ADD FAVORITE BEERS"
-            type="text"
-            name="location"
-            defaultValue={this.state.location}
-            onChange={this.onChange}
-            error={errors.location}
-            line="line"
-            info="Please separate with a comma"
-          /> */}
-          {/* <SelectListGroup
-                  name="status"
-                  options={options}
-                  defaultValue={this.state.status}
-                  onChange={this.onChange}
-                  error={errors.status}
-                  info="Give us some favorites you have!"
-                /> */}
           <div className="mb-3">
             <button
               type="button"
