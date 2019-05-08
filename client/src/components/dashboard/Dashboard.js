@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import { deleteUser } from "../../actions/authActions";
 import Spinner from "../common/Spinner";
-import Profile from "./Profile";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -57,7 +56,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1>Dashboard from {this.props.profile.profile.handle}</h1>
         {dashboardContent}
       </div>
     );
