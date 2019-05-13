@@ -22,7 +22,9 @@ class Beerwall extends Component {
     } else {
       //  Check if logged in user has beer data
       if (Object.keys(beer).length > 0) {
-        beerwallContent = <Beer />;
+        beerwallContent = this.props.beer.beer.map(beer => {
+          return <Beer key={beer._id} beer={beer} />;
+        });
       } else {
         // No beers posted yet
         beerwallContent = (
@@ -42,7 +44,9 @@ class Beerwall extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Beerwall</h1>
-              {beerwallContent}
+              <div className="container">
+                <div className="row">{beerwallContent}</div>
+              </div>
             </div>
           </div>
         </div>
