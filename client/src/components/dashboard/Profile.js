@@ -14,7 +14,8 @@ class Profile extends Component {
         <div className="jumbotron">
           <div className="container text-center">
             <h1>{this.props.auth.user.name}</h1>
-            <p>info here: {this.props.profile.handle}</p>
+            {/* <p>info here: infotext</p> */}
+            <p>{this.props.profile.profile.info}</p>
           </div>
         </div>
 

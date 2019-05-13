@@ -56,7 +56,8 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard from {this.props.profile.profile.handle}</h1>
+        <h1>{this.props.profile.profile.handle}</h1>
+        <h1>Dashboard from name_of_user</h1>
         {dashboardContent}
       </div>
     );
